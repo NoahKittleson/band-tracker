@@ -75,36 +75,36 @@ public class BandTest {
   }
 
 
-  // @Test
-  // public void addBand_addsBandToVenue() {
-  //   Band myBand = new Band("Tom Sawyer");
-  //   myBand.save();
-  //   Venue myVenue = new Venue("Dave's Dive Bar");
-  //   myVenue.save();
-  //   myVenue.addBand(myBand);
-  //   Band savedBand = myVenue.getBands().get(0);
-  //   assertTrue(myBand.equals(savedBand));
-  // }
-//
-// @Test
-// public void getBooks_returnsAllBooks_List() {
-//   Book myBook = new Book("Tom Sawyer");
-//   myBook.save();
-//   Author myAuthor = new Author("Dave", "Smith");
-//   myAuthor.save();
-//   myAuthor.addBook(myBook);
-//   List savedBooks = myAuthor.getBooks();
-//   assertEquals(1, savedBooks.size());
-// }
-//
-// @Test
-// public void delete_deletesAllAuthorAndBookAssociations() {
-//   Book myBook = new Book("Tom Sawyer");
-//   myBook.save();
-//   Author myAuthor = new Author("Dave", "Smith");
-//   myAuthor.save();
-//   myAuthor.addBook(myBook);
-//   myAuthor.delete();
-//   assertEquals(0, myBook.getAuthors().size());
-// }
+  @Test
+  public void addVenue_addsVenueToBand() {
+    Band myBand = new Band("Tom Sawyer");
+    myBand.save();
+    Venue myVenue = new Venue("Dave's Dive Bar");
+    myVenue.save();
+    myBand.addVenue(myVenue);
+    Band savedBand = myVenue.getBands().get(0);
+    assertTrue(myBand.equals(savedBand));
+  }
+
+  @Test
+  public void getVenues_returnsAllVenues_List() {
+    Band myBand = new Band("Tom Sawyer");
+    myBand.save();
+    Venue myVenue = new Venue("Huckleberry Inn");
+    myVenue.save();
+    myBand.addVenue(myVenue);
+    List savedVenues = myBand.getVenues();
+    assertEquals(1, savedVenues.size());
+  }
+
+  @Test
+  public void delete_deletesAllBandAndVenueAssociations() {
+    Venue myVenue = new Venue("Tom Sawyer");
+    myVenue.save();
+    Band myBand = new Band("Dinner");
+    myBand.save();
+    myBand.addVenue(myVenue);
+    myBand.delete();
+    assertEquals(0, myVenue.getBands().size());
+  }
 }
