@@ -19,6 +19,10 @@ public class App {
 
     post("/bands", (request, response) -> {
       String name = request.queryParams("band");
+      if (name.equals("")) {
+        response.redirect("http://localhost:4567/");
+        return null;
+      }
       Band band = new Band(name);
       band.save();
       response.redirect("http://localhost:4567/bands");
@@ -34,6 +38,10 @@ public class App {
 
     post("/venues", (request, response) -> {
       String name = request.queryParams("venue");
+      if (name.equals("")) {
+        response.redirect("http://localhost:4567/");
+        return null;
+      }
       Venue venue = new Venue(name);
       venue.save();
       response.redirect("/");
