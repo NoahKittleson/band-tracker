@@ -21,8 +21,7 @@ public class App {
       String name = request.queryParams("band");
       Band band = new Band(name);
       band.save();
-      String url = String.format("/bands", band.getId());
-      response.redirect(url);
+      response.redirect("http://localhost:4567/bands");
       return null;
     });
 
@@ -32,5 +31,13 @@ public class App {
       model.put("template", "templates/bands.vtl");
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
+
+    post("/venues", (request, response) -> {
+      String name = request.queryParams("venue");
+      Venue venue = new Venue(name);
+      venue.save();
+      response.redirect("/");
+      return null;
+    });
   }
 }
