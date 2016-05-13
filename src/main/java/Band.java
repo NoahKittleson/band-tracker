@@ -2,6 +2,7 @@ import org.sql2o.*;
 import java.util.List;
 
 public class Band {
+  private int id;
   private String name;
 
   public Band(String name) {
@@ -11,4 +12,12 @@ public class Band {
   public String getName() {
     return name;
   }
+
+  public static List<Band> all() {
+    String sql = "SELECT id, name FROM bands";
+    try(Connection con = DB.sql2o.open()) {
+      return con.createQuery(sql).executeAndFetch(Band.class);
+    }
+  }
+
 }

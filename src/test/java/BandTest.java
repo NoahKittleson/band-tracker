@@ -16,23 +16,23 @@ public class BandTest {
     assertEquals(true, myBand instanceof Band);
   }
 
+  @Test
+  public void getName_instantiatesWithName_string() {
+    Band myBand = new Band("MGM Tea");
+    assertEquals("MGM Tea", myBand.getName());
+  }
+
+  @Test
+  public void all_emptyAtFirst() {
+    assertEquals(Band.all().size(), 0);
+  }
+
   // @Test
-  // public void getName_instantiatesWithCategory_string() {
-  //   Category myCategory = new Category("Dinner");
-  //   assertEquals("Dinner", myCategory.getName());
+  // public void equals_returnsTrueIfNamesAreTheSame_true() {
+  //   Band firstBand = new Band("The Cheatles");
+  //   Band secondBand = new Band("The Cheatles");
+  //   assertTrue(firstBand.equals(secondBand));
   // }
-//
-//   @Test
-//   public void all_emptyAtFirst() {
-//     assertEquals(Category.all().size(), 0);
-//   }
-//
-//   @Test
-//   public void equals_returnsTrueIfNamesAreTheSame_true() {
-//     Category firstCategory = new Category("Dinner");
-//     Category secondCategory = new Category("Dinner");
-//     assertTrue(firstCategory.equals(secondCategory));
-//   }
 //
 //   @Test
 //   public void save_savesObjectIntoDatabase_true() {
