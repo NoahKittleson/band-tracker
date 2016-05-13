@@ -5,3 +5,7 @@ band-edit.vtl
   <input id="band" name="band" type="text">
   <button type="submit" class="btn btn-success" id="edit-band">Update Band</button>
 </form>
+<br>
+<form action="/bands/$band.getId()/delete" method="post">
+  <button type="submit" class="btn btn-danger" id="delete-band">Delete Band</button>
+</form>

@@ -65,5 +65,13 @@ public class App {
       model.put("template", "templates/band-edit.vtl");
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
+
+    post("/bands/:id/delete", (request, response) -> {
+      int bandId = Integer.parseInt(request.params("id"));
+      Band savedBand = Band.find(bandId);
+      savedBand.delete();
+      response.redirect("http://localhost:4567/bands");
+      return null;
+    });
   }
 }

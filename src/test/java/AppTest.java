@@ -70,5 +70,16 @@ public class AppTest extends FluentTest {
     assertThat(pageSource()).contains("The Cake Bakers");
   }
 
+  @Test
+  public void deleteBand() {
+    Band newBand = new Band("The Pie Bakers");
+    newBand.save();
+    String url = String.format("http://localhost:4567/bands/%d/edit", newBand.getId());
+    goTo(url);
+    submit("#delete-band");
+    goTo(url);
+    assertThat(pageSource()).contains("$band.getName()");
+  }
+
 
 }
