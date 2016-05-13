@@ -26,34 +26,34 @@ public class VenueTest {
   public void all_emptyAtFirst() {
     assertEquals(Venue.all().size(), 0);
   }
-  //
-  // @Test
-  // public void equals_returnsTrueIfNamesAreTheSame_true() {
-  //   Band firstBand = new Band("The Cheatles");
-  //   Band secondBand = new Band("The Cheatles");
-  //   assertTrue(firstBand.equals(secondBand));
-  // }
+
+  @Test
+  public void equals_returnsTrueIfNamesAreTheSame_true() {
+    Venue firstVenue = new Venue("D Bar");
+    Venue secondVenue = new Venue("D Bar");
+    assertTrue(firstVenue.equals(secondVenue));
+  }
   //
   // @Test
   // public void save_savesObjectIntoDatabase_true() {
-  //   Band myBand = new Band("King Harkinian's Magical Minions");
-  //   myBand.save();
-  //   assertTrue(Band.all().get(0).equals(myBand));
+  //   Venue myVenue = new Venue("The Watering Hole");
+  //   myVenue.save();
+  //   assertTrue(Venue.all().get(0).equals(myVenue));
   // }
   //
   // @Test
   // public void save_assignsIdToObject() {
-  //   Band myBand = new Band("Methro Skull");
-  //   myBand.save();
-  //   Band savedBand = Band.all().get(0);
-  //   assertEquals(myBand.getId(), savedBand.getId());
+  //   Venue myVenue = new Venue("Wizard Palace");
+  //   myVenue.save();
+  //   Venue savedVenue = Venue.all().get(0);
+  //   assertEquals(myVenue.getId(), savedVenue.getId());
   // }
   //
   // @Test
-  // public void find_findsBandsInDatabase_True() {
-  //   Band myBand = new Band("The Antarctic Monkeys");
-  //   myBand.save();
-  //   Band savedBand = Band.find(myBand.getId());
-  //   assertTrue(myBand.equals(savedBand));
+  // public void find_findsVenuesInDatabase_True() {
+  //   Venue myVenue = new Venue("Old Pokey's Tavern");
+  //   myVenue.save();
+  //   Venue savedVenue = Venue.find(myVenue.getId());
+  //   assertTrue(myVenue.equals(savedVenue));
   // }
 }
