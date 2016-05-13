@@ -51,19 +51,19 @@ public class BandTest {
 
   @Test
   public void find_findsBandsInDatabase_True() {
-    Band myBand = new Band("Dinner");
+    Band myBand = new Band("The Antarctic Monkeys");
     myBand.save();
     Band savedBand = Band.find(myBand.getId());
     assertTrue(myBand.equals(savedBand));
   }
-//
-//   @Test
-//   public void update_updatesRecipes_true() {
-//     Category myCategory = new Category("Dinner");
-//     myCategory.save();
-//     myCategory.update("Brunch");
-//     assertEquals("Brunch", Category.find(myCategory.getId()).getName());
-//   }
+
+  @Test
+  public void update_updatesRecipes_true() {
+    Band myBand = new Band("Game of Thorns");
+    myBand.save();
+    myBand.update("Dinner is Coming");
+    assertEquals("Dinner is Coming", Band.find(myBand.getId()).getName());
+  }
 //
 //   @Test
 //   public void delete_deletesRecipe_true() {
