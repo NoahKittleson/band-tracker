@@ -33,13 +33,13 @@ public class BandTest {
     Band secondBand = new Band("The Cheatles");
     assertTrue(firstBand.equals(secondBand));
   }
-//
-//   @Test
-//   public void save_savesObjectIntoDatabase_true() {
-//     Category myCategory = new Category("Dinner");
-//     myCategory.save();
-//     assertTrue(Category.all().get(0).equals(myCategory));
-//   }
+
+  @Test
+  public void save_savesObjectIntoDatabase_true() {
+    Band myBand = new Band("King Harkinian's Magical Minions");
+    myBand.save();
+    assertTrue(Band.all().get(0).equals(myBand));
+  }
 //
 //   @Test
 //   public void save_assignsIdToObject() {
