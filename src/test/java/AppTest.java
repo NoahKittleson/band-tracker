@@ -77,6 +77,7 @@ public class AppTest extends FluentTest {
     String url = String.format("http://localhost:4567/bands/%d/edit", newBand.getId());
     goTo(url);
     submit("#delete-band");
+    url = String.format("http://localhost:4567/bands/%d", newBand.getId());
     goTo(url);
     assertThat(pageSource()).contains("$band.getName()");
   }

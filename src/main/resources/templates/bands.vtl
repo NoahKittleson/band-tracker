@@ -1,7 +1,9 @@
-bands.vtl
+<h1>All Bands:</h1>
 
 <ul>
   #foreach ($band in $bands)
     <a href="/bands/$band.getId()"><li>$band.getName()</li></a>
   #end
 </ul>
+
+<a href="/">Home</a>
