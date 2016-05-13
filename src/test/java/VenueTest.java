@@ -48,12 +48,34 @@ public class VenueTest {
     Venue savedVenue = Venue.all().get(0);
     assertEquals(myVenue.getId(), savedVenue.getId());
   }
-  
+
   @Test
   public void find_findsVenuesInDatabase_True() {
     Venue myVenue = new Venue("Old Pokey's Tavern");
     myVenue.save();
     Venue savedVenue = Venue.find(myVenue.getId());
     assertTrue(myVenue.equals(savedVenue));
+  }
+
+  @Test
+  public void addBand_addsBandToVenue() {
+    Venue myVenue = new Venue("Tom Sawyer");
+    myVenue.save();
+    Band myBand = new Band("Dave's Dive Bar");
+    myBand.save();
+    myVenue.addBand(myBand);
+    Venue savedVenue = myBand.getVenues().get(0);
+    assertTrue(myVenue.equals(savedVenue));
+  }
+
+  @Test
+  public void getBands_returnsAllBands_List() {
+    Venue myVenue = new Venue("Tom Sawyer");
+    myVenue.save();
+    Band myBand = new Band("Huckleberry Inn");
+    myBand.save();
+    myVenue.addBand(myBand);
+    List savedBands = myVenue.getBands();
+    assertEquals(1, savedBands.size());
   }
 }
