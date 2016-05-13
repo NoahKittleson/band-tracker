@@ -59,11 +59,16 @@ public class AppTest extends FluentTest {
     assertThat(pageSource()).contains("Flour Power");
   }
 
-  // @Test
-  // public void updateBand() {
-  //   Band newBand = new Band("The Pie Bakers");
-  //   newBand.save();
-  // }
+  @Test
+  public void updateBand() {
+    Band newBand = new Band("The Pie Bakers");
+    newBand.save();
+    String url = String.format("http://localhost:4567/bands/%d/edit", newBand.getId());
+    goTo(url);
+    fill("#band").with("The Cake Bakers");
+    submit("#update-band");
+    assertThat(pageSource()).contains("The Cake Bakers");
+  }
 
 
 }

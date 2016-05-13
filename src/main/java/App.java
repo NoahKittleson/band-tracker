@@ -47,5 +47,23 @@ public class App {
       model.put("template", "templates/band.vtl");
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
+
+    post("/bands/:id/edit", (request, response) -> {
+      int bandId = Integer.parseInt(request.params("id"));
+      Band savedBand = Band.find(bandId);
+      String newName = request.queryParams("band");
+      savedBand.update(newName);
+      String url = String.format("http://localhost:4567/bands/%d", savedBand.getId());
+      response.redirect(url);
+      return null;
+    });
+
+    get("/bands/:id/edit", (request, response) -> {
+      Map<String, Object> model = new HashMap<String, Object>();
+      Band band = Band.find(Integer.parseInt(request.params("id")));
+      model.put("band", band);
+      model.put("template", "templates/band-edit.vtl");
+      return new ModelAndView(model, layout);
+    }, new VelocityTemplateEngine());
   }
 }
