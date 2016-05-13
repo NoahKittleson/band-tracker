@@ -47,15 +47,22 @@ public class AppTest extends FluentTest {
     assertEquals(Venue.all().size(), 1);
   }
 
+  @Test
+  public void venueAddedToBandPage() {
+    Band newBand = new Band("The Pie Bakers");
+    newBand.save();
+    Venue newVenue = new Venue("Flour Power");
+    newVenue.save();
+    newBand.addVenue(newVenue);
+    String url = String.format("http://localhost:4567/bands/%d", newBand.getId());
+    goTo(url);
+    assertThat(pageSource()).contains("Flour Power");
+  }
+
   // @Test
-  // public void venueAddedToBandPage() {
-  //   Recipe newRecipe = new Recipe("Pie", "Bake a pie", 5);
-  //   newRecipe.save();
-  //   Ingredient newIngredient = new Ingredient("Flour");
-  //   newIngredient.save();
-  //   String url = String.format("http://localhost:4567/recipes/%d", newRecipe.getId());
-  //   goTo(url);
-  //   assertThat(pageSource()).contains("Flour");
+  // public void updateBand() {
+  //   Band newBand = new Band("The Pie Bakers");
+  //   newBand.save();
   // }
 
 

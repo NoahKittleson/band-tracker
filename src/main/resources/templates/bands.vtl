@@ -2,6 +2,6 @@ bands.vtl
 
 <ul>
   #foreach ($band in $bands)
-    <li>$band.getName()</li>
+    <a href="/bands/$band.getId()"><li>$band.getName()</li></a>
   #end
 </ul>

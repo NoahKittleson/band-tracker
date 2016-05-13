@@ -39,5 +39,13 @@ public class App {
       response.redirect("/");
       return null;
     });
+
+    get("/bands/:id", (request, response) -> {
+      Map<String, Object> model = new HashMap<String, Object>();
+      Band band = Band.find(Integer.parseInt(request.params("id")));
+      model.put("band", band);
+      model.put("template", "templates/band.vtl");
+      return new ModelAndView(model, layout);
+    }, new VelocityTemplateEngine());
   }
 }
