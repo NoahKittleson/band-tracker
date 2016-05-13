@@ -13,7 +13,23 @@ public class App {
     get("/", (request, response) -> {
       Map<String, Object> model = new HashMap<String, Object>();
 
-      model.put("template", "templates/home.vtl");
+      model.put("template", "templates/index.vtl");
+      return new ModelAndView(model, layout);
+    }, new VelocityTemplateEngine());
+
+    post("/bands", (request, response) -> {
+      String name = request.queryParams("band");
+      Band band = new Band(name);
+      band.save();
+      String url = String.format("/bands", band.getId());
+      response.redirect(url);
+      return null;
+    });
+
+    get("/bands", (request, response) -> {
+      Map<String, Object> model = new HashMap<String, Object>();
+      model.put("bands", Band.all());
+      model.put("template", "templates/bands.vtl");
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
   }

@@ -24,9 +24,18 @@ public class AppTest extends FluentTest {
   @Rule
   public DatabaseRule database = new DatabaseRule();
 
-  // @Test
-  // public void rootTest() {
-  //   goTo("http://localhost:4567/");
-  //   assertThat(pageSource()).contains("");
-  // }
+  @Test
+  public void rootTest() {
+    goTo("http://localhost:4567/");
+    assertThat(pageSource()).contains("Track a Band");
+  }
+
+  @Test
+  public void recipeIsCreatedTest() {
+    goTo("http://localhost:4567/");
+    fill("#band").with("Big Burger");
+    submit("#save-band");
+    assertThat(pageSource()).contains("Big Burger");
+  }
+
 }
