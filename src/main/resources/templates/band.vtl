@@ -1,13 +1,26 @@
 band.vtl
 
 <h1>$band.getName()</h1>
-
-<h3>All played Venues:</h3>
+#if ($band.getVenues().size() > 0)
+  <h3>All played Venues:</h3>
+#end
 <ul>
   #foreach ($venue in $band.getVenues())
     <li>$venue.getName()</li>
   #end
 </ul>
+
+<h3>Add a Venue:</h3>
+<form action='/bands/$band.getId()/add_venue' method='post'>
+  <input id="band_id" name="band_id" type="hidden" value="$band.getId()">
+  <label for="venue">Select a Venue</label>
+  <select id='venue' name='venue' type='text'>
+    #foreach($venue in $allVenues)
+      <option value="$venue.getId()"> $venue.getName() </option>
+    #end
+  </select>
+  <button type="submit" class="btn btn-info">Add venue to this band</button>
+</form>
 
 
 <a href="/bands/$band.getId()/edit">Edit Band</a>
