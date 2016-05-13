@@ -94,5 +94,13 @@ public class App {
       response.redirect(url);
       return null;
     });
+
+    get("/venues/:id", (request, response) -> {
+      Map<String, Object> model = new HashMap<String, Object>();
+      Venue venue = Venue.find(Integer.parseInt(request.params("id")));
+      model.put("venue", venue);
+      model.put("template", "templates/venue.vtl");
+      return new ModelAndView(model, layout);
+    }, new VelocityTemplateEngine());
   }
 }

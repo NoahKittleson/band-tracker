@@ -1,0 +1,12 @@
+<h1>$venue.getName()</h1>
+
+#if ($venue.getBands().size() > 0)
+  <h3>All Bands who've played here:</h3>
+#end
+<ul>
+  #foreach ($band in $venue.getBands())
+    <li><a href="/bands/$band.getId()">$band.getName()</a></li>
+  #end
+</ul>
+
+<a href="/bands">All Bands</a>

@@ -82,4 +82,16 @@ public class AppTest extends FluentTest {
     assertThat(pageSource()).contains("$band.getName()");
   }
 
+  @Test
+  public void viewBandsForVenue() {
+    Band newBand = new Band("The Pie Bakers");
+    newBand.save();
+    Venue newVenue = new Venue("The Pie Bakery");
+    newVenue.save();
+    newBand.addVenue(newVenue);
+    String url = String.format("http://localhost:4567/venues/%d", newVenue.getId());
+    goTo(url);
+    assertThat(pageSource()).contains("The Pie Bakers");
+  }
+
 }
