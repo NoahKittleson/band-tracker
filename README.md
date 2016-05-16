@@ -11,6 +11,7 @@ Clone the repository or otherwise download the source files to your computer.  I
 * \c band_tracker;
 * CREATE TABLE bands (id serial PRIMARY KEY, name varchar);
 * CREATE TABLE venues (id serial PRIMARY KEY, name varchar);
+* CREATE TABLE bands_venues (id serial PRIMARY KEY, band_id int, menu_id int);
 * CREATE DATABASE band_tracker_test WITH TEMPLATE band_tracker;
 
 Then, within the command line navigate to the Band-Tracker file and run gradle.  This should set up a local server so that you can view the webpage on any modern browser at localhost:4567.
